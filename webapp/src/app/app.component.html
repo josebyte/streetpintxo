@@ -1,3 +1,29 @@
 <ion-app>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+
+      <ion-buttons class="left-btn" slot="end">
+        <ion-button [routerLink]="'/'+city" routerLinkActive="active" *ngFor="let city of cities">
+          {{ city }}
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons class="right-btn" slot="end">
+        <ion-button routerLink="/login" routerLinkActive="active">
+          {{'MENU.LOGIN' | translate}}
+        </ion-button>
+        <ion-button routerLink="/register" routerLinkActive="active">
+          {{'MENU.REGISTER' | translate}}
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

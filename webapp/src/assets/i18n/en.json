@@ -1,0 +1,9 @@
+{
+  "GENERAL": {
+    "SEARCH": "Search"
+  },
+  "MENU": {
+    "LOGIN": "SignIn",
+    "REGISTER": "SignUp"
+  }
+}
