@@ -1,0 +1,7 @@
+{
+  "name": "streetpintxo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
