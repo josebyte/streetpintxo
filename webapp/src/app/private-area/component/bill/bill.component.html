@@ -1,0 +1,11 @@
+
+<ion-grid>
+    <ion-row>
+        <ion-col>{{bill.createdDate | date: 'dd/MM/yyyy' }}</ion-col>
+        <ion-col>{{bill.bar}}</ion-col>
+        <ion-col>{{bill.num}}</ion-col>
+        <ion-col>{{bill.subtotal | currency:'EUR':true}}</ion-col>
+        <ion-col>{{bill.tax | currency:'EUR':true}}</ion-col>
+        <ion-col>{{bill.total | currency:'EUR':true}} </ion-col>
+    </ion-row>
+</ion-grid>

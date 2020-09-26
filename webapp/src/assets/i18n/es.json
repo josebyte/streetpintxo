@@ -4,6 +4,7 @@
   },
   "MENU": {
     "LOGIN": "Login",
-    "REGISTER": "Registro"
+    "REGISTER": "Registro",
+    "PRIVATE_AREA": "Area privada"
   }
 }

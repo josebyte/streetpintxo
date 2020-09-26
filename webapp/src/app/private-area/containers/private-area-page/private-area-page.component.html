@@ -1,0 +1,8 @@
+
+<ion-list>
+    <ion-list-header>Private area</ion-list-header>
+</ion-list>
+
+<ion-item *ngFor="let bill of bills">
+    <app-bill [bill]="bill"></app-bill>
+</ion-item>
