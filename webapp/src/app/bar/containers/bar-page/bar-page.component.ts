@@ -26,7 +26,6 @@ export class BarPageComponent implements OnInit {
   ngOnInit(
   ) {
     this.route.params.subscribe(params => {
-      console.log(params)
       this.currentCity = params.city;
     });
   }

@@ -1,3 +1,22 @@
-<h1>Home</h1>
 
-<app-search></app-search>
+<p>Street pintxo is born to help bars to survive the pandemic by promoting
+    serving pintxos on the street. Bars adhered to the program will offer a
+    discount to the clients in exchange of being promoted in our website.
+    This is an ambitious project so we will offer this service per city, and we
+    expect people from different countries to come and live this unique
+    experience.</p>
+
+<ion-grid>
+    <ion-row>
+        <ion-col size-lg="6" size-md="6" size="12" *ngFor="let city of cities$ | async">
+
+            <ion-card [routerLink]="['/city/'+city.name]">
+                <img [src]="'assets/img/cities/'+ city.id + '.jpg'" />
+                <ion-card-header>
+                    <ion-card-title>{{ city.name }}</ion-card-title>
+                </ion-card-header>
+            </ion-card>
+
+        </ion-col>
+    </ion-row>
+</ion-grid>

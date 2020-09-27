@@ -1,9 +1,10 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import { globalEnvironment } from './_environment';
+
+const END_POINT = 'http://localhost';
 
 export const environment = {
-  production: false
+  production: false,
+  ...globalEnvironment(END_POINT),
 };
 
 /*

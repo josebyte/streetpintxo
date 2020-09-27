@@ -7,7 +7,8 @@
       </ion-buttons>
       <ion-title>{{ title }}</ion-title>
 
-      <ion-buttons class="left-btn" slot="end">
+
+      <ion-buttons class="left-btn" slot="end" *ngIf="cities$ | async as cities">
         <ion-button [routerLink]="['/city/'+city.name]" routerLinkActive="active" *ngFor="let city of cities">
           {{ city.name }}
         </ion-button>
