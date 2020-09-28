@@ -5,6 +5,7 @@
   "MENU": {
     "LOGIN": "Login",
     "REGISTER": "Registro",
+    "LOGOUT": "Desconectar",
     "PRIVATE_AREA": "Area privada"
   }
 }

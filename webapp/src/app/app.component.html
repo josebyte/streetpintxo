@@ -19,11 +19,16 @@
           {{'MENU.PRIVATE_AREA' | translate}}
         </ion-button>
         <ion-button [routerLink]="['/login']" routerLinkActive="active">
-          {{'MENU.LOGIN' | translate}}
+          <ion-icon name="log-in-outline"></ion-icon> {{'MENU.LOGIN' | translate}}
         </ion-button>
         <ion-button [routerLink]="['/register']" routerLinkActive="active">
           {{'MENU.REGISTER' | translate}}
         </ion-button>
+        <ion-button (click)="logout()" routerLinkActive="active">
+          <ion-icon name="log-out-outline"></ion-icon> {{'MENU.LOGOUT' | translate}}
+        </ion-button>
+
+
       </ion-buttons>
 
     </ion-toolbar>

@@ -1,11 +1,12 @@
 /**
  * BarController
  *
- * @description :: Server-side logic for managing bars
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ * @description :: Server-side actions for handling incoming requests.
+ * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
 module.exports = {
-	
+  
+
 };
 

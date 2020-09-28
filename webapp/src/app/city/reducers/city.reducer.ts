@@ -24,7 +24,7 @@ export const reducer = createReducer(
     })),
     on(CityActions.loadCitiesSuccess, (state, {cities}) => ({
         ...state,
-        cities: cities,
+        cities: cities.results,
         callState: LoadingState.LOADED,
     })),
     on(CityActions.loadCitiesFailure, (state, {error}) => ({

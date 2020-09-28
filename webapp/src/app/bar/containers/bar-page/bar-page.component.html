@@ -1,21 +1,34 @@
 
-<app-search></app-search>
+<ion-content>
+    <app-search></app-search>
 
-<ion-grid>
-    <ion-row>
-        <ion-col size-lg="3" size-md="4" size="6" *ngFor="let bar of bars">
+    <ion-grid *ngIf="bars$ | async as bars">
+        <ion-row>
+            <ion-col size-lg="3" size-md="4" size="6" *ngFor="let bar of bars">
 
-            <ion-card>
-                <img [src]="'assets/img/'+ bar.image + '.jpg'" />
-                <ion-card-header>
-                    <ion-card-title>{{ bar.name }}</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                    <span> {{ bar.address }} </span>
-                    <p>{{ bar.desc }}</p>
-                </ion-card-content>
-            </ion-card>
+                <ion-card [routerLink]="['/city/'+currentCity+'/'+bar.id]">
+                    <img [src]="'assets/img/bars/'+ bar.id + '.jpg'" />
+                    <ion-card-header>
+                        <ion-card-title>{{ bar.name }}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <span> {{ bar.address }} </span>
+                        <p>{{ bar.desc }}</p>
+                    </ion-card-content>
+                </ion-card>
 
-        </ion-col>
-    </ion-row>
-</ion-grid>
+            </ion-col>
+        </ion-row>
+
+        total rows:
+        {{totalRows$ | async | json}}
+
+        <div *ngIf="totalRows$ | async as totalRows">
+            <ion-button *ngIf="currentPag > 1" (click)="paginateTo(currentPag-1)">Prev</ion-button>
+            <ion-button *ngIf="(currentPag * 10) < totalRows " (click)="paginateTo(currentPag+1)">Next</ion-button>
+        </div>
+
+    </ion-grid>
+</ion-content>
+
+

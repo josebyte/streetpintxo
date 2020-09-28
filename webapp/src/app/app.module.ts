@@ -23,6 +23,8 @@ import { environment } from '../environments/environment';
 
 import { reducers, metaReducers } from './reducers';
 import {CityEffects} from "./city/effects/city.effects";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {BarEffects} from "./bar/effects/bar.effects";
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,7 +55,8 @@ export function createTranslateLoader(http: HttpClient) {
             strictActionImmutability: true
           }}),
     EffectsModule.forRoot([CityEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

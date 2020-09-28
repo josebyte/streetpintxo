@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {BarService} from "../../services/bar.services";
 
 @Component({
   selector: 'app-bar-detail',
@@ -7,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarDetailComponent implements OnInit {
 
-  bar;
+  barId;
+  bar$;
 
-  constructor() { }
+  constructor(
+      private route: ActivatedRoute,
+      private barService: BarService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.barId = params.bar;
+      this.bar$ = this.barService.getBar(params.bar);
+    });
+  }
 
 }

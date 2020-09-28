@@ -4,6 +4,8 @@
   },
   "MENU": {
     "LOGIN": "SignIn",
-    "REGISTER": "SignUp"
+    "REGISTER": "SignUp",
+    "LOGOUT": "LogOut",
+    "PRIVATE_AREA": "Private area"
   }
 }

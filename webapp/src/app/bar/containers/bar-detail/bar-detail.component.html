@@ -1,5 +1,5 @@
-<ion-card>
-  <img [src]="'assets/img/'+ bar.image + '.jpg'" />
+<ion-card *ngIf="bar$ | async as bar">
+  <img [src]="'assets/img/bars/'+ bar.id + '.jpg'" />
   <ion-card-header>
     <ion-card-title>{{ bar.name }}</ion-card-title>
   </ion-card-header>

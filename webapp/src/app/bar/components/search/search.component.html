@@ -1,23 +1,29 @@
-<!--
 <form [formGroup]="form">
     <ion-grid>
         <ion-row>
             <ion-col size-lg="6" size-md="6" size-sm="6" size="12">
                 <ion-item>
                     <ion-label position="floating">Bar name</ion-label>
-                    <ion-input formControlName="bar" type="text"></ion-input>
+                    <ion-input formControlName="name" type="text"></ion-input>
                 </ion-item>
             </ion-col>
+            <!--
             <ion-col size-lg="6" size-md="6" size-sm="6" size="12">
                 <ion-item>
-                    <ion-label position="floating">City</ion-label>
-                    <ion-input formControlName="city" type="text"></ion-input>
+                    <ion-label position="floating">Date</ion-label>
+                    <ion-datetime formControlName="date"  displayFormat="DD/MM/YY" placeholder="Select Date"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            -->
+            <ion-col size-lg="6" size-md="6" size-sm="6" size="12">
+                <ion-item>
+                    <ion-label position="floating">Vegan-friendly</ion-label>
+                    <ion-checkbox formControlName="veganFriendly"></ion-checkbox>
                 </ion-item>
             </ion-col>
             <ion-col size-lg="6" size-md="6" size-sm="6" size="12">
-                <ion-button>{{'GENERAL.SEARCH' | translate}}</ion-button>
+                <ion-button (click)="searchBars()">{{'GENERAL.SEARCH' | translate}}</ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>
 </form>
--->

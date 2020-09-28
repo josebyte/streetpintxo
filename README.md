@@ -20,7 +20,7 @@ Backend:
 ```
 cd api
 npm install
-npm start
+sails lift //and press 2
 ```
 
 Frontend:
@@ -40,4 +40,4 @@ npm start
 - Tooltips
 - Animations
 - Style (logo and colors)
-- Bar details
+- Icons

@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { SearchComponent } from "../bar/components/search/search.component";
-import {TranslateModule} from "@ngx-translate/core";
 import { StoreModule } from '@ngrx/store';
 import * as fromCity from '../city/reducers/city.reducer';
 
@@ -16,12 +14,9 @@ import * as fromCity from '../city/reducers/city.reducer';
         FormsModule,
         IonicModule,
         HomePageRoutingModule,
-        TranslateModule,
         StoreModule.forFeature(fromCity.cityFeatureKey, fromCity.reducer),
     ],
-    exports: [
-        SearchComponent
-    ],
-    declarations: [HomePage, SearchComponent]
+    exports: [],
+    declarations: [HomePage]
 })
 export class HomePageModule {}

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Bar } from "../../bar.model";
+import { Bar } from '../../bar.model';
 import { ActivatedRoute } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import * as fromBar from '../../reducers/bar.reducer';
+import { BarActions } from '../../actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bar-page',
@@ -8,26 +12,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./bar-page.component.scss'],
 })
 export class BarPageComponent implements OnInit {
-
   currentCity: string;
+  currentPag = 1;
 
-  bars: Bar[] = [
-    { name: 'Antzoki', image: '1', desc: 'Cafe bar emblemático junto a Jardines de Albia', address: 'Done Bikendi Kalea, 2', city: 'Bilbao', veganFriendly: true, date: new Date() },
-    { name: 'Cafe-Iruña', image: '2', desc: "Bar dsc", address: 'Colón de Larreátegui Kalea, 13', city: 'Bilbao', veganFriendly: false, date: new Date() },
-    { name: 'El Globo', image: '3', desc: "Bar dsc3", address: 'Diputazio Kalea, 8', city: 'Bilbao', veganFriendly: true, date: new Date() },
-    { name: 'El Globo', image: '3', desc: "Bar dsc3", address: 'Diputazio Kalea, 8', city: 'Bilbao', veganFriendly: true, date: new Date() },
-    { name: 'El Globo', image: '3', desc: "Bar dsc3", address: 'Diputazio Kalea, 8', city: 'Bilbao', veganFriendly: true, date: new Date() },
-    { name: 'El Globo', image: '3', desc: "Bar dsc3", address: 'Diputazio Kalea, 8', city: 'Bilbao', veganFriendly: true, date: new Date() },
-    { name: 'El Globo', image: '3', desc: "Bar dsc3", address: 'Diputazio Kalea, 8', city: 'Bilbao', veganFriendly: true, date: new Date() },
-  ] // todo: remove mock and use api
+  bars$: Observable<Bar[]> = this.barStore.pipe(select(fromBar.getResults));
+  totalRows$ = this.barStore.pipe(select(fromBar.getTotalRow));
+  form$ = this.barStore.pipe(select(fromBar.getForm));
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+      private route: ActivatedRoute,
+      private barStore: Store<fromBar.State>
+  ) {}
 
   ngOnInit(
   ) {
     this.route.params.subscribe(params => {
       this.currentCity = params.city;
+      this.barStore.dispatch(BarActions.searchBars({pag: this.currentPag}));
     });
+  }
+
+  paginateTo(pag){
+    this.barStore.dispatch(BarActions.searchBars({pag}));
+    this.currentPag = pag;
   }
 
 }

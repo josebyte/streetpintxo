@@ -16,7 +16,7 @@ import { City } from "./city/city.model";
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = "StreetPintxo";
+  title = 'StreetPintxo';
   cities$: Observable<City[]> = this.cityStore.pipe(select(fromCity.getCities));
 
   constructor(
@@ -44,5 +44,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.cityStore.dispatch(CityActions.loadCities());
+  }
+
+  logout(){
   }
 }
