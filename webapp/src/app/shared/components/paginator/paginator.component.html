@@ -1,0 +1,16 @@
+<div>
+    <ion-fab-button *ngIf="pag > 1"
+                    (click)="paginateTo(pag-1)"
+                    class="ion-float-left">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-button *ngIf="(pag * 10) < total"
+                    (click)="paginateTo(pag+1)"
+                    class="ion-float-right">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-fab-button>
+</div>
+
+
+

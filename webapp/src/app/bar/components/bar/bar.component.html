@@ -1,0 +1,13 @@
+<ion-card [routerLink]="['/city/'+bar.city+'/'+bar.id]">
+    <img class="img-wrapper" [style.background]="'url(assets/img/bars/'+ bar.id + '.jpg)'" />
+    <ion-card-header>
+        <ion-card-title>
+            {{ bar.name }}
+            <img tooltip="Vegan-friendly" class="icon ion-float-right" *ngIf="bar.veganFriendly" [src]="'assets/icons/vegan.png'">
+        </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <span> {{ bar.address }} </span>
+        <p>{{ bar.desc }}</p>
+    </ion-card-content>
+</ion-card>

@@ -8,7 +8,11 @@ export abstract class BaseService{
     }
 
     public getPageParams(page, limit): HttpParams{
-        const skip = (page - 1) * limit;
+        let skip = 0;
+        if (page > 1) {
+            skip = (page - 1) * limit;
+        }
+
         return new HttpParams()
             .set('limit', limit)
             .set('skip', skip.toString());

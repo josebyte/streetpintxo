@@ -1,0 +1,40 @@
+  <form [formGroup]="form" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <ion-card>
+
+            <ion-card-header>
+              <ion-card-title class="ion-text-center">
+                <h3>{{'MENU.LOGIN' | translate}}</h3>
+              </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input formControlName="email" type="email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+            </ion-card-content>
+
+            <div class="ion-padding">
+              <ion-button size="medium" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+            </div>
+
+            <ion-item-divider></ion-item-divider>
+
+            <p class="ion-text-center">Don't have an account?</p>
+
+            <div class="ion-padding">
+              <ion-button [routerLink]="['/auth/register']" color="danger" size="medium" expand="block">Register</ion-button>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+

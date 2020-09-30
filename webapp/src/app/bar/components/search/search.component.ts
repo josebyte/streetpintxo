@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import {BarActions} from '../../actions';
-import {Store} from '@ngrx/store';
+import { BarActions } from '../../actions';
+import { Store } from '@ngrx/store';
 import * as fromBar from '../../reducers/bar.reducer';
 
 @Component({
@@ -11,9 +11,11 @@ import * as fromBar from '../../reducers/bar.reducer';
 })
 export class SearchComponent implements OnInit {
 
+  @Output() filters = new EventEmitter();
+
   form: FormGroup = new FormGroup({
     name: new FormControl(''),
-    //date: new FormControl(''),
+    updatedAt: new FormControl(''),
     veganFriendly: new FormControl(false),
   });
 
@@ -29,7 +31,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchBars(){
-    this.barStore.dispatch(BarActions.searchBars({pag: 1, filters: this.form.value}));
+    this.filters.emit(this.form.value);
   }
 
 }

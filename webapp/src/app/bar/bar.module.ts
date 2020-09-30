@@ -11,12 +11,15 @@ import { SearchComponent } from './components/search/search.component';
 import { BarService } from './services/bar.services';
 import { EffectsModule } from '@ngrx/effects';
 import { BarEffects } from './effects/bar.effects';
+import {PrivateAreaServices} from '../private-area/services/private-area.services';
+import { BarComponent } from './components/bar/bar.component';
 
 @NgModule({
   declarations: [
       BarPageComponent,
       BarDetailComponent,
-      SearchComponent
+      SearchComponent,
+      BarComponent
   ],
   imports: [
     SharedModule,
@@ -24,7 +27,8 @@ import { BarEffects } from './effects/bar.effects';
     EffectsModule.forFeature([BarEffects]),
   ],
   providers: [
-    BarService
+    BarService,
+    PrivateAreaServices
   ]
 })
 export class BarModule { }

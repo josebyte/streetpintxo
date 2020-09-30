@@ -11,20 +11,20 @@ export class AuthService {
     //private _http: HttpClient,
   ) { }
 
-  login({ username, password }): boolean{
+  login({ email, password }): boolean{
     const users: any[] = JSON.parse(localStorage.getItem('users')); // todo: user model
-    const loggedUser = users?.filter(user => user.username === username && user.password === password);
+    const loggedUser = users?.filter(user => user.email === email && user.password === password);
 
     if (loggedUser && loggedUser.length > 0) {
-      localStorage.setItem('currentUser', JSON.stringify(username));
-      this.router.navigate(['/ships']);
+      localStorage.setItem('currentUser', JSON.stringify(email));
+      this.router.navigate(['/home']);
       return false;
     } else {
       return true;
     }
   }
 
-  register({firstName, lastName, username, password}): boolean {
+  register({firstName, lastName, email, username, password}): boolean {
     const registeredUsers = JSON.parse(localStorage.getItem('users'));
 
     if (registeredUsers && registeredUsers.length > 0) {
@@ -36,7 +36,7 @@ export class AuthService {
     }
 
     const users = registeredUsers ? registeredUsers : [];
-    users.push({firstName, lastName, username, password});
+    users.push({firstName, lastName, email, username, password});
     localStorage.setItem('users', JSON.stringify(users));
     this.router.navigate(['/auth']);
 

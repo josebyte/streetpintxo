@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 export const searchBars = createAction(
   '[Bar] Search Bars',
-    props<{ pag: number, filters?: any }>()
+    props<{ pag: number, skip?: number, filters?: any }>()
 );
 
 export const searchBarsSuccess = createAction(

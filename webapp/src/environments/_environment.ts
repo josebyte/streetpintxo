@@ -15,7 +15,7 @@ export const globalEnvironment = (baseUrl: string) => ({
     bar: {
       get:             baseUrl+BASE_PORT+'/bar',
     },
-    bills: {
+    bill: {
       get:             baseUrl+BASE_PORT+'/bill',
     }
   }

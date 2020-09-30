@@ -1,41 +1,8 @@
 <ion-app>
-
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>{{ title }}</ion-title>
-
-
-      <ion-buttons class="left-btn" slot="end" *ngIf="cities$ | async as cities">
-        <ion-button [routerLink]="['/city/'+city.name]" routerLinkActive="active" *ngFor="let city of cities">
-          {{ city.name }}
-        </ion-button>
-      </ion-buttons>
-
-      <ion-buttons class="right-btn" slot="end">
-        <ion-button [routerLink]="['/private-area']" routerLinkActive="active">
-          {{'MENU.PRIVATE_AREA' | translate}}
-        </ion-button>
-        <ion-button [routerLink]="['/login']" routerLinkActive="active">
-          <ion-icon name="log-in-outline"></ion-icon> {{'MENU.LOGIN' | translate}}
-        </ion-button>
-        <ion-button [routerLink]="['/register']" routerLinkActive="active">
-          {{'MENU.REGISTER' | translate}}
-        </ion-button>
-        <ion-button (click)="logout()" routerLinkActive="active">
-          <ion-icon name="log-out-outline"></ion-icon> {{'MENU.LOGOUT' | translate}}
-        </ion-button>
-
-
-      </ion-buttons>
-
-    </ion-toolbar>
-  </ion-header>
+  <app-header></app-header>
 
   <ion-content>
-    <ion-router-outlet></ion-router-outlet>
+    <ion-router-outlet id="main"></ion-router-outlet>
   </ion-content>
 
 </ion-app>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Bill} from "../../bill.model";
+import { Bill } from '../../bill.model';
+import { StylingService } from '../../../shared/services/styling.service';
+import { PrivateAreaServices } from '../../services/private-area.services';
 
 @Component({
   selector: 'app-private-area-page',
@@ -8,27 +10,26 @@ import {Bill} from "../../bill.model";
 })
 export class PrivateAreaPageComponent implements OnInit {
 
-  bills: Bill[] = [
-    { id: 1, bar: 'Antzoki', num: 3145, createdDate: new Date(), products: [], subtotal: 44.21, tax: 3.09, total: 47.3 },
-    { id: 2, bar: 'Cafe-Iruá', num: 3146, createdDate: new Date(), products: [], subtotal: 44.21, tax: 3.09, total: 47.3 },
-    { id: 3, bar: 'El Globo',  num: 3147, createdDate: new Date(), products: [], subtotal: 44.21, tax: 3.09, total: 47.3 },
-    { id: 4, bar: 'Lepanto', num: 3148, createdDate: new Date(), products: [], subtotal: 44.21, tax: 3.09, total: 47.3 },
-    { id: 5, bar: 'La viña del ensanche', num: 3149, createdDate: new Date(), products: [], subtotal: 44.21, tax: 3.09, total: 47.3 },
-  ];
+  bills: Bill[];
 
-  columns = [
-    { name: 'date' },
-    { name: 'num' },
-    { name: 'bar' },
-    { name: 'subtotal' },
-    { name: 'tax' },
-    { name: 'total' },
-  ];
+  constructor(
+      private stylingService: StylingService,
+      private privateAreaServices: PrivateAreaServices
+  ) { }
 
+  ngOnInit() {
+    this.stylingService.setTheme(null);
+    this.privateAreaServices.loadBills().subscribe( (bills) => {
+      this.bills = bills;
+    });
+  }
 
+  deleteBill(id){
+    console.log("id a borrar" +id)
+    this.privateAreaServices.deleteBill(id);
+    this.bills = this.bills.filter(bill => bill.id !== id); // optimistic delete
 
-  constructor() { }
-
-  ngOnInit() {}
+    console.log(this.bills)
+  }
 
 }

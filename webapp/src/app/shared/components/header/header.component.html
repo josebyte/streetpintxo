@@ -1,0 +1,63 @@
+<ion-menu swipe-gesture="true" side="start" menuId="first" contentId="main">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>
+                <ion-img src="assets/img/logos/logo.png"></ion-img>
+            </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list *ngIf="cities$ | async as cities">
+            <ion-item (click)="closeMenu()" [routerLink]="['/city/'+city.name]" *ngFor="let city of cities">
+                {{ city.name }}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+
+<ion-header>
+    <ion-toolbar color="primary" class="toolbar-style">
+        <ion-buttons slot="start" class="ion-hide-md-up">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+
+        <ion-title [routerLink]="['/home']">
+            <div class="logo"></div>
+        </ion-title>
+
+        <ion-buttons class="left-btn" slot="end" *ngIf="cities$ | async as cities">
+            <ion-button class="ion-hide-md-down" [routerLink]="['/city/'+city.name]" routerLinkActive="active" *ngFor="let city of cities">
+                {{ city.name }}
+            </ion-button>
+        </ion-buttons>
+
+        <ion-buttons class="right-btn" slot="end">
+            <ion-button *ngIf="!authService.isLogged()" [routerLink]="['/auth/login']" routerLinkActive="active">
+                <ion-icon name="log-in-outline"></ion-icon> {{'MENU.LOGIN' | translate}}
+            </ion-button>
+            <ion-button *ngIf="!authService.isLogged()" [routerLink]="['/auth/register']" routerLinkActive="active">
+                {{'MENU.REGISTER' | translate}}
+            </ion-button>
+            <ion-button *ngIf="authService.isLogged()" [routerLink]="['/private-area']" routerLinkActive="active">
+                {{'MENU.PRIVATE_AREA' | translate}}
+            </ion-button>
+            <ion-button *ngIf="authService.isLogged()" (click)="logout()" routerLinkActive="active">
+                <ion-icon name="log-out-outline"></ion-icon> {{'MENU.LOGOUT' | translate}}
+            </ion-button>
+
+            <div *ngFor="let lang of LANGS">
+                <ion-button *ngIf="lang !== translate.currentLang" (click)="changeLang(lang)">
+                    <img class="icon" [src]="'assets/flags/' + lang + '.png'">
+                </ion-button>
+            </div>
+
+
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>

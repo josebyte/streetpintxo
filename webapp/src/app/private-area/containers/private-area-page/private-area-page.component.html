@@ -1,8 +1,35 @@
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            <h2>Private area</h2>
+        </ion-list-header>
+    </ion-list>
 
-<ion-list>
-    <ion-list-header>Private area</ion-list-header>
-</ion-list>
+    <ion-item *ngFor="let bill of bills">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-3>
+                    {{bill.createdAt | date}}
+                </ion-col>
+                <ion-col col-5 class="plan-right">
+                    {{bill.name}}
+                </ion-col>
+                <ion-col col-1 class="plan-right">
+                    {{bill.subtotal | currency:'EUR'}}
+                </ion-col>
+                <ion-col col-1 class="plan-right">
+                    {{bill.tax | currency:'EUR'}}
+                </ion-col>
+                <ion-col col-1 class="plan-right">
+                    {{bill.total | currency:'EUR'}}
+                </ion-col>
+                <ion-col col-1 class="plan-right">
+                    <ion-button (click)="deleteBill(bill.id)">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+</ion-content>
 
-<ion-item *ngFor="let bill of bills">
-    <app-bill [bill]="bill"></app-bill>
-</ion-item>

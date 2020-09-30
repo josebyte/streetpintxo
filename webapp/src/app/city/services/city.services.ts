@@ -3,15 +3,18 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
-import { City } from "../city.model";
-import { environment } from "../../../environments/environment";
+import { City } from '../city.model';
+import { environment } from '../../../environments/environment';
+import { BaseService } from '../../shared/services/base.service';
 
 @Injectable()
-export class CityService {
+export class CityService extends BaseService {
     constructor(
         private http: HttpClient,
         public toastController: ToastController
-    ) {}
+    ) {
+        super(toastController);
+    }
 
     loadCities(): Observable<City[]> {
         return this._manageResponse(
@@ -52,14 +55,5 @@ export class CityService {
         }
 
         this._presentToast(message, 'danger');
-    }
-
-    private async _presentToast(message, type) {
-        const toast = await this.toastController.create({
-            message,
-            duration: 4500,
-            color: type
-        });
-        toast.present();
     }
 }

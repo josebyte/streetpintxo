@@ -1,10 +1,73 @@
-<ion-card *ngIf="bar$ | async as bar">
-  <img [src]="'assets/img/bars/'+ bar.id + '.jpg'" />
-  <ion-card-header>
-    <ion-card-title>{{ bar.name }}</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <span> {{ bar.address }} </span>
-    <p>{{ bar.desc }}</p>
-  </ion-card-content>
-</ion-card>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" size="12">
+        <app-bar *ngIf="bar$ | async as bar" [bar]="bar"></app-bar>
+      </ion-col>
+      <ion-col size-sm="6" size="12">
+        <ion-list>
+          <ion-list-header>
+            Recent comments
+          </ion-list-header>
+
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/img/avatars/avatar-finn.png">
+            </ion-avatar>
+            <ion-label>
+              <h2>Finn</h2>
+              <h3>Nice!!</h3>
+              <p>Best pintxo ever!!</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/img/avatars/avatar-han.png">
+            </ion-avatar>
+            <ion-label>
+              <h2>Han</h2>
+              <h3>Good pintxo at good price</h3>
+              <p>With only one, I've got enough on my plate for a day.</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/img/avatars/avatar-luke.png">
+            </ion-avatar>
+            <ion-label>
+              <h2>Luke</h2>
+              <h3>Your thoughts betray you</h3>
+              <p>I feel the good in you, the conflict...</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h3 class="ion-padding">Buy pintxos with special discount:</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let pintxo of pintxos" size-sm="6" size="12">
+        <ion-card>
+          <div class="discount">50%</div>
+          <ion-img [src]="'assets/img/pintxos/'+ pintxo + '.jpg'"></ion-img>
+          <ion-card-content>
+            <span> Pintxo rico </span>
+            <p>Elaborado con los mejores ingredientes</p>
+          </ion-card-content>
+
+          <ion-button (click)="buy()" size="medium" expand="block"> <ion-icon name="cart-outline"></ion-icon> 1.75 € </ion-button>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+
+

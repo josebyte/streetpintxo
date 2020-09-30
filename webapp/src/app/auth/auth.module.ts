@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from '../shared/shared.module';
+
+import { AuthRoutingModule } from './auth-routing.module';
 
 // Components
-import { AuthRoutingModule } from './auth-routing.module';
-import { ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from './containers/login/login.component';
+import { RegisterComponent } from './containers/register/register.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoginComponent,
+    RegisterComponent
+  ],
   imports: [
     SharedModule,
-    AuthRoutingModule,
-    ReactiveFormsModule
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }

@@ -1,14 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { TranslateService} from "@ngx-translate/core";
-import { CityActions } from "./city/actions";
-import { select, Store} from "@ngrx/store";
-import * as fromCity from "./city/reducers/city.reducer";
-import { Observable } from "rxjs";
-import { City } from "./city/city.model";
+import { TranslateService} from '@ngx-translate/core';
+import { CityActions } from './city/actions';
+import { Store} from '@ngrx/store';
+import * as fromCity from './city/reducers/city.reducer';
 
 @Component({
   selector: 'app-root',
@@ -16,22 +14,14 @@ import { City } from "./city/city.model";
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'StreetPintxo';
-  cities$: Observable<City[]> = this.cityStore.pipe(select(fromCity.getCities));
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private translate: TranslateService,
-    private cityStore: Store<fromCity.State>
-
+    private cityStore: Store<fromCity.State>,
+    public translate: TranslateService,
   ) {
-    translate.addLangs(['en', 'es']);
-    translate.setDefaultLang('es');
-
-    localStorage.setItem('currentUser', 'joseba'); // by-pass the authguard for task #5: al entrar por primera vez redirigir a lista naves
-
     this.initializeApp();
   }
 
@@ -46,6 +36,5 @@ export class AppComponent implements OnInit {
     this.cityStore.dispatch(CityActions.loadCities());
   }
 
-  logout(){
-  }
+
 }

@@ -26,5 +26,30 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "urls": [
+        "http://localhost:1337/city/**",
+        "http://localhost:1337/bars/**"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxAge": "5d",
+        "maxSize": 50
+      }
+    },
+    {
+      "name": "api-freshness",
+      "urls": [
+        "http://localhost:1337/bills/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxAge": "10m",
+        "maxSize": 50
+      }
+    }
   ]
 }

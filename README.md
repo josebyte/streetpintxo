@@ -32,12 +32,7 @@ npm start
 
 ## TODO:
 
-- Login
-- Paginator
 - Loader
-- ion-menu
-- Schema (loading)
+- Skeletons
 - Tooltips
-- Animations
-- Style (logo and colors)
-- Icons
+- Form Validations text
