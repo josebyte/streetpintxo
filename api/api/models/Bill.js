@@ -12,7 +12,26 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
+    name: {
+      type: 'string',
+      required: true,
+      example: 'Bar El Globo'
+    },
+    subtotal: {
+      type: 'number',
+      required: true,
+      example: 6
+    },
+    tax: {
+      type: 'number',
+      required: true,
+      example: 2
+    },
+    total: {
+      type: 'number',
+      required: true,
+      example: 8
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
