@@ -1,13 +1,17 @@
 FROM node:12.18.3
 
-RUN mkdir /api
+RUN apt-get update && \
+    apt-get install -y git
 
-WORKDIR /api
+RUN npm install -g sails grunt-cli grunt bower nodejs pm2 npm-check-updates
 
-# the dependencies are already installed in the local copy of the project, so
-# they will be copied to the container
-ADD api /api
+RUN mkdir /server
 
-CMD ["/app/app.js", "--no-daemon"]
+# Define mountable directories.
+VOLUME ["/server"]
 
-RUN cd /api; npm i
+# Define working directory.
+WORKDIR /server
+
+# Expose ports.
+EXPOSE 1337

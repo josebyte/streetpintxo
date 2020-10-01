@@ -5,10 +5,11 @@ services:
   sailsjs:
     build: .
     volumes:
-      - ./api:/api
+      - "./api/:/server"
+      - "/usr/lib/node_modules/sails:/usr/lib/node_modules/sails"
+    command: "sails lift"
     environment:
       - NODE_ENV=development
-    command: node app
     ports:
       - 1337:1337
 
