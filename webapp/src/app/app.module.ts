@@ -22,10 +22,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
 import { reducers, metaReducers } from './reducers';
-import {CityEffects} from "./city/effects/city.effects";
+import { CityEffects} from "./city/effects/city.effects";
 import { ServiceWorkerModule } from '@angular/service-worker';
-import {BarEffects} from "./bar/effects/bar.effects";
-import {AuthService} from './auth/services/auth.service';
+import { AuthService} from './auth/services/auth.service';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');

@@ -5,3 +5,12 @@
     background-repeat: no-repeat !important;
     background-position: center !important;
 }
+
+ion-card-content p{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 62.4px;
+}

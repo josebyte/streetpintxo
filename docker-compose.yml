@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  sailsjs:
+    build: .
+    volumes:
+      - ./api:/api
+    environment:
+      - NODE_ENV=development
+    command: node app
+    ports:
+      - 1337:1337
+
+  mysqlsails:
+    image: mysql:5.7.31
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: streetpintxo
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:

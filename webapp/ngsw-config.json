@@ -47,7 +47,7 @@
       ],
       "cacheConfig": {
         "strategy": "freshness",
-        "maxAge": "10m",
+        "maxAge": "1m",
         "maxSize": 50
       }
     }
