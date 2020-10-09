@@ -4,9 +4,6 @@ services:
 
   sailsjs:
     build: .
-    volumes:
-      - "./api/:/server"
-      - "/usr/lib/node_modules/sails:/usr/lib/node_modules/sails"
     command: "sails lift"
     environment:
       - NODE_ENV=development
